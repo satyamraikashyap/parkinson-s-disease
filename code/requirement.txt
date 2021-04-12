@@ -1,2 +1,9 @@
 streamlit
 sqlalchemy
+scikit-learn
+scikit-image
+imutils
+opencv-contrib-python
+numpy
+pillow
+
