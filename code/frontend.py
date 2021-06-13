@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 import streamlit as st
 import os
 from PIL import Image
+from predict_parkinson import predict
 
 def db():
     engine = create_engine('sqlite:///project_db.sqlite3')
@@ -76,9 +77,18 @@ if choice == 'Prediction':
             with st.spinner('Please wait while we process data'):
                 Image.open(wave_img).save(os.path.join(BASE_DIR,'wave','wave.png'))
                 Image.open(spiral_img).save(os.path.join(BASE_DIR,'spiral','spiral.png'))
+                base=os.getcwd()
+                spiralpath=os.path.join(BASE_DIR,'wave','wave.png')
+                wavepath=os.path.join(BASE_DIR,'spiral','spiral.png')
+                out = predict(spiralpath,wavepath)
+                st.success("Predictions")
+                st.image(out[0])
+                st.image(out[1])
                 st.balloons()
-                st.info('baki kal')
+                
 
-        
+if choice == 'about project':
+    pass      
 
-
+if choice =="instructions":
+    pass

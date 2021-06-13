@@ -32,6 +32,9 @@ class Prediction(Base):
     wave_img_path = Column(String)
     predict_date = Column(DateTime, default=datetime.utcnow)
 
+    def __str__(self) -> str:
+        return f'{self.patient_name}({self.age})'
+
 
 
 
